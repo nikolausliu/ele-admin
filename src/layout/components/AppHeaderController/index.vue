@@ -1,8 +1,11 @@
 <template>
-  <div class="app-header-controller" :class="iconClass" @click="handlClick"></div>
+  <div class="app-header-controller" @click="handlClick">
+    <i :class="iconClass"></i>
+  </div>
 </template>
 
 <script>
+
 export default {
   name: "app-header-controller",
   data() {
@@ -28,4 +31,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '~@/styles/variables.less';
+.app-header-controller {
+  padding: 0 10px;
+  line-height: @appHeaderHeight;
+  font-size: 24px;
+  cursor: pointer;
+}
 </style>

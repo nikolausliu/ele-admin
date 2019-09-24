@@ -29,14 +29,14 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '~@/styles/variables.less';
 .app-header {
-  height: 50px;
+  height: @appHeaderHeight;
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   overflow: hidden;
   &-controller {
     float: left;
-    font-size: 20px;
   }
   .app-breadcrumb {
     float: left;

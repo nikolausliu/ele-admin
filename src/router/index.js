@@ -28,7 +28,7 @@ export default new Router({
           path: 'home',
           component: () => import('@/views/home/index'),
           name: 'home',
-          meta: { title: 'home', icon: 'home' }
+          meta: { title: '首页', icon: 'home' }
         },
         {
           path: 'test/menu1/menu1-1',
