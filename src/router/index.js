@@ -29,20 +29,44 @@ export default new Router({
           component: () => import('@/views/home/index'),
           name: 'home',
           meta: { title: 'home', icon: 'home' }
-        }
-      ]
-    },
-    {
-      path: '/test',
-      component: Layout,
-      children: [
+        },
         {
-          path: 'index',
-          component: () => import('@/views/test/index'),
-          name: 'test',
-          meta: { title: 'test', icon: 'test' }
-        }
+          path: 'test/menu1/menu1-1',
+          component: () => import('@/views/test/menu-1-1'),
+          name: 'test-menu1-1',
+          meta: { title: '菜单1-1', }
+        },
+        {
+          path: 'test/menu1/menu1-2/menu1-2-1',
+          component: () => import('@/views/test/menu-1-2-1'),
+          name: 'test-menu1-2-1',
+          meta: { title: '菜单1-2-1', }
+        },
+        {
+          path: 'test/menu1/menu1-2/menu1-2-2',
+          component: () => import('@/views/test/menu-1-2-2'),
+          name: 'test-menu1-2-2',
+          meta: { title: '菜单1-2-2', }
+        },
+        {
+          path: 'test/menu2',
+          component: () => import('@/views/test/menu-2'),
+          name: 'test-menu2',
+          meta: { title: '菜单2', }
+        },
       ]
     },
+    // {
+    //   path: '/test',
+    //   component: Layout,
+    //   children: [
+    //     {
+    //       path: 'index',
+    //       component: () => import('@/views/test/index'),
+    //       name: 'test',
+    //       meta: { title: 'test', icon: 'test' }
+    //     }
+    //   ]
+    // },
   ]
 })

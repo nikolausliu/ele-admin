@@ -1,68 +1,80 @@
 <template>
-  <div class="app-sidebar">
-    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-      <el-radio-button :label="false">展开</el-radio-button>
-      <el-radio-button :label="true">收起</el-radio-button>
-    </el-radio-group>
-    <el-menu
-      default-active="1-4-1"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-      :collapse="isCollapse"
-    >
-      <el-submenu index="1">
+  <div class="app-sidebar" :class="{'app-sidebar--is-collapse': isCollapse}">
+    <el-menu :collapse="isCollapse" router>
+      <template v-for="(item, index) in menu">
+        <template v-if="item.hasOwnProperty('children') && item.children.length === 0">
+          <el-menu-item :key="index" :index="item.path">
+            <i :class="item.icon" v-if="item.icon"></i>
+            <span slot="title">{{item.title}}</span>
+          </el-menu-item>
+        </template>
+        <template v-else>
+          <app-submenu :menu="item" :key="index"></app-submenu>
+        </template>
+      </template>
+      <!-- <el-menu-item index="/home">
+        <i class="el-icon-s-shop"></i>
+        <span slot="title">首页</span>
+      </el-menu-item>
+      <el-submenu index="/test">
         <template slot="title">
           <i class="el-icon-location"></i>
-          <span slot="title">导航一</span>
+          <span slot="title">测试</span>
         </template>
-        <el-menu-item-group>
-          <span slot="title">分组一</span>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <span slot="title">选项4</span>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
+        <el-submenu index="/test/menu1">
+          <template slot="title">菜单1</template>
+          <el-menu-item index="/test/menu1/menu1-1">菜单1-1</el-menu-item>
+          <el-submenu index="/test/menu1/menu1-2">
+            <template slot="title">菜单1-2</template>
+            <el-menu-item index="/test/menu1/menu1-2/menu1-2-1">菜单1-2-1</el-menu-item>
+            <el-menu-item index="/test/menu1/menu1-2/menu1-2-2">菜单1-2-2</el-menu-item>
+          </el-submenu>
         </el-submenu>
-      </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
-        <span slot="title">导航三</span>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <span slot="title">导航四</span>
-      </el-menu-item>
+        <el-menu-item index="/test/menu2">菜单2</el-menu-item>
+      </el-submenu> -->
     </el-menu>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import AppSubmenu from "./app-submenu";
 export default {
   name: "app-sidebar",
+  components: {
+    [AppSubmenu.name]: AppSubmenu
+  },
   data() {
     return {
-      isCollapse: true
     };
   },
-  methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
+  computed: {
+    ...mapGetters(["sidebar", "menu"]),
+    isCollapse() {
+      return this.sidebar.fold;
     }
-  }
+  },
+  methods: {}
 };
 </script>
 
 <style lang="less" scoped>
+.app-sidebar {
+  width: 210px;
+  transition: width 0.3s;
+  background-color: #304156;
+  &--is-collapse {
+    width: 64px;
+  }
+  .el-menu {
+    border-right: 0;
+    background-color: #304156;
+    &-item {
+      color: #bfcbd0;
+      &--is-active {
+        color: #409eff;
+      }
+    }
+  }
+}
 </style>
