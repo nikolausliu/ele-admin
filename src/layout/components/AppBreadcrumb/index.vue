@@ -1,9 +1,11 @@
 <template>
   <div class="app-breadcrumb">
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-      <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+      <el-breadcrumb-item
+        v-for="(item, index) in breadcrumblist"
+        :key="index"
+        :to="item.path"
+      >{{item.meta.title}}</el-breadcrumb-item>
     </el-breadcrumb>
   </div>
 </template>
@@ -15,15 +17,25 @@ export default {
     return {};
   },
   computed: {
-    bread() {
-      return this.$route;
+    breadcrumblist() {
+      let matched = this.$route.matched;
+      const home = {
+        path: "/",
+        meta: {
+          title: "首页"
+        }
+      };
+      if (matched[matched.length - 1].meta && matched[matched.length - 1].meta.title === "首页") {
+        matched = [home];
+      }
+      return matched;
     }
   }
 };
 </script>
 
 <style lang="less" scoped>
-@import '~@/styles/variables.less';
+@import "~@/styles/variables.less";
 .app-breadcrumb {
   .el-breadcrumb {
     line-height: @appHeaderHeight;

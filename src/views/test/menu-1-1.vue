@@ -7,6 +7,11 @@
 <script>
 export default {
   name: 'test',
+  data() {
+    return {
+      msg: 'hello'
+    }
+  }
 }
 </script>
 

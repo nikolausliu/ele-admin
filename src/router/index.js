@@ -23,6 +23,7 @@ export default new Router({
       path: '/',
       component: Layout,
       redirect: '/home',
+      meta: { title: '首页' },
       children: [
         {
           path: 'home',
@@ -58,14 +59,52 @@ export default new Router({
     },
     // {
     //   path: '/test',
+    //   redirect: '/test/menu1/menu1-1',
     //   component: Layout,
+    //   meta: {
+    //     title: '嵌套菜单'
+    //   },
     //   children: [
     //     {
-    //       path: 'index',
-    //       component: () => import('@/views/test/index'),
-    //       name: 'test',
-    //       meta: { title: 'test', icon: 'test' }
-    //     }
+    //       path: 'menu1',
+    //       name: 'test-menu1',
+    //       // redirect: '/test/menu1/menu1-1',
+    //       meta: { title: '菜单1' },
+    //       children: [
+    //         {
+    //           path: 'menu1-1',
+    //           component: () => import('@/views/test/menu-1-1'),
+    //           name: 'test-menu1-1',
+    //           meta: { title: '菜单1-1', }
+    //         },
+    //         {
+    //           path: 'menu1-2',
+    //           name: 'test-menu1-2',
+    //           // redirect: '/test/menu1/menu1-2/menu1-2-1',
+    //           meta: { title: '菜单1-2', },
+    //           children: [
+    //             {
+    //               path: 'menu1-2-1',
+    //               component: () => import('@/views/test/menu-1-2-1'),
+    //               name: 'test-menu1-2-1',
+    //               meta: { title: '菜单1-2-1', }
+    //             },
+    //             {
+    //               path: 'menu1-2-2',
+    //               component: () => import('@/views/test/menu-1-2-2'),
+    //               name: 'test-menu1-2-2',
+    //               meta: { title: '菜单1-2-2', }
+    //             },
+    //           ]
+    //         },
+    //       ]
+    //     },
+    //     {
+    //       path: 'menu2',
+    //       component: () => import('@/views/test/menu-2'),
+    //       name: 'test-menu2',
+    //       meta: { title: '菜单2', }
+    //     },
     //   ]
     // },
   ]

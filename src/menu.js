@@ -6,8 +6,104 @@ const menu = [
     children: []
   },
   {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
+    path: '/home',
+    title: '首页',
+    icon: 'el-icon-s-shop',
+    children: []
+  },
+  {
     path: '/test',
-    title: '测试',
+    title: '嵌套菜单',
     icon: 'el-icon-s-promotion',
     children: [
       {
