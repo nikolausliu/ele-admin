@@ -26,31 +26,63 @@ export default new Router({
       meta: { title: '首页' },
       children: [
         {
-          path: 'home',
+          path: '/home',
           component: () => import('@/views/home/index'),
           name: 'home',
           meta: { title: '首页', icon: 'home' }
         },
+        // {
+        //   path: 'test/menu1/menu1-1',
+        //   component: () => import('@/views/test/menu-1-1'),
+        //   name: 'test-menu1-1',
+        //   meta: { title: '菜单1-1', }
+        // },
+        // {
+        //   path: 'test/menu1/menu1-2/menu1-2-1',
+        //   component: () => import('@/views/test/menu-1-2-1'),
+        //   name: 'test-menu1-2-1',
+        //   meta: { title: '菜单1-2-1', }
+        // },
+        // {
+        //   path: 'test/menu1/menu1-2/menu1-2-2',
+        //   component: () => import('@/views/test/menu-1-2-2'),
+        //   name: 'test-menu1-2-2',
+        //   meta: { title: '菜单1-2-2', }
+        // },
+        // {
+        //   path: 'test/menu2',
+        //   component: () => import('@/views/test/menu-2'),
+        //   name: 'test-menu2',
+        //   meta: { title: '菜单2', }
+        // },
+      ]
+    },
+    {
+      path: '/test',
+      component: Layout,
+      redirect: '/test/menu1/menu1-1',
+      meta: { title: '嵌套菜单' },
+      children: [
         {
-          path: 'test/menu1/menu1-1',
+          path: '/test/menu1/menu1-1',
           component: () => import('@/views/test/menu-1-1'),
           name: 'test-menu1-1',
           meta: { title: '菜单1-1', }
         },
         {
-          path: 'test/menu1/menu1-2/menu1-2-1',
+          path: '/test/menu1/menu1-2/menu1-2-1',
           component: () => import('@/views/test/menu-1-2-1'),
           name: 'test-menu1-2-1',
           meta: { title: '菜单1-2-1', }
         },
         {
-          path: 'test/menu1/menu1-2/menu1-2-2',
+          path: '/test/menu1/menu1-2/menu1-2-2',
           component: () => import('@/views/test/menu-1-2-2'),
           name: 'test-menu1-2-2',
           meta: { title: '菜单1-2-2', }
         },
         {
-          path: 'test/menu2',
+          path: '/test/menu2',
           component: () => import('@/views/test/menu-2'),
           name: 'test-menu2',
           meta: { title: '菜单2', }
