@@ -23,4 +23,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.app-main {
+  min-height: calc(100vh - 50px);
+}
 </style>

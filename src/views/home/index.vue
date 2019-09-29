@@ -1,12 +1,20 @@
 <template>
   <div class="home">
-    首页
+    <div v-html="msg"></div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'home',
+  data() {
+    return {}
+  },
+  computed: {
+    msg() {
+      return Array(100).fill('首页').join('<br>');
+    }
+  }
 }
 </script>
 

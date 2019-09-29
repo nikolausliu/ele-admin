@@ -1,7 +1,13 @@
 <template>
   <div class="app-sidebar" :class="{'app-sidebar--is-collapse': isCollapse}">
     <el-scrollbar class="el-scrollbar" wrap-class="scrollbar-wrap">
-      <el-menu :collapse="isCollapse" router>
+      <el-menu
+        :collapse="isCollapse"
+        router
+        text-color="#bfcbd0"
+        background-color="#304156"
+        active-text-color="#20a0ff"
+      >
         <template v-for="(item, index) in menu">
           <template v-if="item.hasOwnProperty('children') && item.children.length === 0">
             <el-menu-item :key="index" :index="item.path">
@@ -73,21 +79,35 @@ export default {
   }
   .el-menu {
     border-right: 0;
-    background-color: #304156;
-    &-item {
-      color: #bfcbd0;
-      &.is-active {
-        color: #20a0ff;
-      }
-    }
-    .el-submenu__title {
-      color: #bfcbd0;
-    }
+    // background-color: #304156;
+    // &-item {
+    //   color: #bfcbd0;
+    //   &.is-active {
+    //     color: #20a0ff;
+    //     background: #304156;
+    //   }
+    //   &:hover {
+    //     background-color: #263445;
+    //   }
+    // }
   }
 }
 </style>
 <style lang="less">
-.scrollbar-wrap {
-  overflow-x: auto !important;
+.app-sidebar {
+  .scrollbar-wrap {
+    overflow-x: auto !important;
+  }
+  .el-submenu {
+    .el-menu {
+      .el-submenu__title,
+      &-item {
+        background-color: #1f2d3d !important;
+        &:hover {
+          background-color: #001528 !important;
+        }
+      }
+    }
+  }
 }
 </style>

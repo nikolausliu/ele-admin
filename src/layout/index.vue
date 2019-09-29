@@ -10,24 +10,25 @@
 
 <script>
 import { mapGetters } from "vuex";
-import {AppSidebar, AppHeader, AppMain} from './components'
+import { AppSidebar, AppHeader, AppMain } from "./components";
 export default {
-  name: 'app-layout',
+  name: "app-layout",
   components: {
     [AppSidebar.name]: AppSidebar,
     [AppHeader.name]: AppHeader,
-    [AppMain.name]: AppMain,
+    [AppMain.name]: AppMain
   },
   computed: {
     ...mapGetters(["sidebar"]),
     isCollapse() {
       return this.sidebar.fold;
     }
-  },
-}
+  }
+};
 </script>
 
 <style lang="less" scoped>
+// TODO: .app-header--fixed类
 .app-sidebar {
   position: fixed;
   left: 0;
@@ -35,9 +36,22 @@ export default {
 }
 .app-main-container {
   margin-left: 210px;
-  transition: margin .3s;
+  transition: margin 0.3s;
+  .app-header {
+    position: fixed;
+    width: calc(100% - 210px);
+    z-index: 1;
+    transition: width 0.3s;
+  }
   &--is-collapse {
     margin-left: 64px;
-  }                                                                                                                                                                                      
+    .app-header {
+      width: calc(100% - 64px);
+    }
+  }
+  .app-main {
+    position: relative;
+    top: 50px;
+  }
 }
 </style>
