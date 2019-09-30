@@ -66,34 +66,25 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import "~@/styles/variables.less";
 .app-sidebar {
-  width: 210px;
+  width: @sidebarWidth;
   transition: width 0.3s;
-  background-color: #304156;
+  background-color: @menuBackgroundColor;
   height: 100vh;
   &--is-collapse {
-    width: 64px;
+    width: @sidebarCollapseWidth;
   }
   .el-scrollbar {
     height: 100%;
   }
   .el-menu {
     border-right: 0;
-    // background-color: #304156;
-    // &-item {
-    //   color: #bfcbd0;
-    //   &.is-active {
-    //     color: #20a0ff;
-    //     background: #304156;
-    //   }
-    //   &:hover {
-    //     background-color: #263445;
-    //   }
-    // }
   }
 }
 </style>
 <style lang="less">
+@import "~@/styles/variables.less";
 .app-sidebar {
   .scrollbar-wrap {
     overflow-x: auto !important;
@@ -102,9 +93,9 @@ export default {
     .el-menu {
       .el-submenu__title,
       &-item {
-        background-color: #1f2d3d !important;
+        background-color: @submenuBackgroundColor !important;
         &:hover {
-          background-color: #001528 !important;
+          background-color: @submenuHoverBackgroundColor !important;
         }
       }
     }

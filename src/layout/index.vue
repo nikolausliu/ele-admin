@@ -2,8 +2,8 @@
   <div class="app-layout">
     <app-sidebar class="app-sidebar"></app-sidebar>
     <div class="app-main-container" :class="{'app-main-container--is-collapse': isCollapse}">
-      <app-header></app-header>
-      <app-main></app-main>
+      <app-header :class="{'app-header--is-fixed': header.fixed}"></app-header>
+      <app-main :class="{'app-main--is-fixed': header.fixed}"></app-main>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
     [AppMain.name]: AppMain
   },
   computed: {
-    ...mapGetters(["sidebar"]),
+    ...mapGetters(["sidebar", "header"]),
     isCollapse() {
       return this.sidebar.fold;
     }
@@ -28,30 +28,34 @@ export default {
 </script>
 
 <style lang="less" scoped>
-// TODO: .app-header--fixed类
+@import "~@/styles/variables.less";
 .app-sidebar {
   position: fixed;
   left: 0;
   top: 0;
 }
 .app-main-container {
-  margin-left: 210px;
+  margin-left: @sidebarWidth;
   transition: margin 0.3s;
   .app-header {
-    position: fixed;
-    width: calc(100% - 210px);
-    z-index: 1;
-    transition: width 0.3s;
+    &--is-fixed {
+      position: fixed;
+      width: calc(100% - @sidebarWidth);
+      z-index: 1;
+      transition: width 0.3s;
+    }
   }
   &--is-collapse {
-    margin-left: 64px;
+    margin-left: @sidebarCollapseWidth;
     .app-header {
-      width: calc(100% - 64px);
+      width: calc(100% - @sidebarCollapseWidth);
     }
   }
   .app-main {
     position: relative;
-    top: 50px;
+    &--is-fixed {
+      top: 50px;
+    }
   }
 }
 </style>

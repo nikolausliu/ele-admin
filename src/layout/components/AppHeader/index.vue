@@ -9,12 +9,18 @@
     <div class="app-header-menu">
       <el-dropdown trigger="click">
         <div class="avatar">
+          <span class="username">Nikolaus</span>
           <img :src="avatar" />
         </div>
         <el-dropdown-menu slot="dropdown" class="dropdown-menu">
-          <el-dropdown-item>退出登录</el-dropdown-item>
+          <el-dropdown-item>
+            <i class="el-icon-error"></i>退出登录
+          </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
+      <div class="app-header-settings" @click="settingsClickHandle">
+        <i class="el-icon-s-tools"></i>
+      </div>
     </div>
   </div>
 </template>
@@ -39,6 +45,9 @@ export default {
   methods: {
     switchSidebarFold() {
       this.$store.dispatch("app/switchSidebarFold");
+    },
+    settingsClickHandle() {
+      this.$store.dispatch("app/switchHeaderFixed");
     }
   }
 };
@@ -60,17 +69,39 @@ export default {
   &-menu {
     float: right;
     height: 100%;
+    margin-right: 20px;
     line-height: @appHeaderHeight;
     .avatar {
-      margin: 5px;
-      margin-right: 20px;
+      width: auto;
+      height: 40px;
+      margin-top: 5px;
+      margin-left: 20px;
       outline: none;
+      cursor: pointer;
+      .username {
+        display: inline-block;
+        vertical-align: top;
+        line-height: 40px;
+        margin-right: 10px;
+      }
       img {
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        cursor: pointer;
       }
+    }
+  }
+  .el-dropdown {
+    float: left;
+  }
+  &-settings {
+    float: left;
+    margin-left: 20px;
+    i {
+      line-height: @appHeaderHeight;
+      font-size: 24px;
+      color: #5e5e66;
+      cursor: pointer;
     }
   }
 }

@@ -23,7 +23,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import "~@/styles/variables.less";
 .app-main {
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - @appHeaderHeight);
+  box-sizing: border-box;
+  padding: 20px;
 }
 </style>
