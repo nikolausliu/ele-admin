@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="page-home">
     <div v-html="msg"></div>
   </div>
 </template>

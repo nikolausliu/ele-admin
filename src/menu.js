@@ -103,7 +103,7 @@ const menu = [
   },
   {
     path: '/test',
-    title: '嵌套菜单',
+    title: '多级菜单',
     icon: 'el-icon-s-promotion',
     children: [
       {

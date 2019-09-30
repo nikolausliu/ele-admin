@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    Test 2
+  <div class="page-menu-2">
+    菜单 2
   </div>
 </template>
 
