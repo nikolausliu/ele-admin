@@ -7,13 +7,13 @@
     ></app-header-controller>
     <app-breadcrumb class="app-breadcrumb"></app-breadcrumb>
     <div class="app-header-menu">
-      <el-dropdown trigger="click">
+      <el-dropdown trigger="click" @command="commandHandle">
         <div class="avatar">
           <span class="username">Nikolaus</span>
           <img :src="avatar" />
         </div>
         <el-dropdown-menu slot="dropdown" class="dropdown-menu">
-          <el-dropdown-item>
+          <el-dropdown-item command="logout">
             <i class="el-icon-error"></i>退出登录
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -48,6 +48,13 @@ export default {
     },
     settingsClickHandle() {
       this.$store.dispatch("app/switchHeaderFixed");
+    },
+    commandHandle(command) {
+      console.log(command)
+      this[`${command}Handle`]();
+    },
+    logoutHandle() {
+      this.$router.replace('/login');
     }
   }
 };

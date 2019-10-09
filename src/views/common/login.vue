@@ -15,6 +15,7 @@
             type="password"
             clearable
             show-password
+            @keyup.enter.native="submit"
           >
             <i class="el-icon-lock" slot="prepend"></i>
           </el-input>
@@ -37,8 +38,8 @@ export default {
   data() {
     return {
       form: {
-        username: "",
-        password: ""
+        username: "admin",
+        password: "123456"
       },
       rules: {
         username: [{ required: true, message: "用户名不能为空" }],
@@ -48,6 +49,7 @@ export default {
   },
   methods: {
     canvasInit() {
+      // return;
       // https://github.com/jf3096/zhihu-particle
       const options = {
         atomColor: "#E4E5E6",
@@ -55,15 +57,38 @@ export default {
         density: "medium",
         velocity: "medium"
       };
-      return;
       const particle = new Particle(
         document.getElementById("page-login"),
         options
       );
     },
     submit() {
+      const _this = this;
       this.$refs.form.validate(valid => {
         if (valid) {
+          $.ajax({
+            url: "/api/login",
+            type: "post",
+            dataType: "json",
+            data: {
+              username: this.form.username,
+              password: this.form.password
+            }
+          }).done(function(data, status, jqXHR) {
+            const {code, msg} = data;
+            if (code === 0) {
+              _this.$message({
+                message: "登录成功，欢迎回来！",
+                type: "success"
+              });
+              _this.$router.replace("/");
+            } else {
+              _this.$message({
+                message: msg,
+                type: "error"
+              });
+            }
+          });
         } else {
         }
       });
@@ -95,18 +120,24 @@ export default {
 }
 </style>
 <style lang="less">
+@bgColor: #283443;
+@borderColor: #3e4957;
 .login-form {
   .el-input-group__prepend {
-    background: #283443;
-    border-color: #3e4957;
+    background: @bgColor;
+    border-color: @borderColor;
   }
   .el-input__inner {
-    border-color: #3e4957;
+    border-color: @borderColor;
     border-left: 0;
-    background: #283443;
+    background: @bgColor;
+    color: #eee;
+  }
+  .el-form-item.is-error .el-input__inner {
+    border-color: @borderColor;
   }
   .el-form-item.is-error .el-input-group__prepend {
-    border-color: #f56c6c;
+    // border-color: #f56c6c;
   }
 }
 </style>
