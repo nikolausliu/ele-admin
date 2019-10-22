@@ -1,7 +1,8 @@
 import Mock from 'mockjs'
 import { parseBody } from '@/utils/index'
 
-Mock.mock('/api/login', 'post', (options) => {
+// 登录
+Mock.mock('/api/login', 'post', options => {
   const { username, password } = parseBody(options.body);
   console.log(username, password)
   if (username === 'admin' && password === '123456') {

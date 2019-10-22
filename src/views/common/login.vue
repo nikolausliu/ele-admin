@@ -30,6 +30,8 @@
 
 <script>
 import Particle from "zhihu-particle";
+import { login } from "@/api";
+
 export default {
   name: "login",
   mounted() {
@@ -66,29 +68,23 @@ export default {
       const _this = this;
       this.$refs.form.validate(valid => {
         if (valid) {
-          $.ajax({
-            url: "/api/login",
-            type: "post",
-            dataType: "json",
-            data: {
-              username: this.form.username,
-              password: this.form.password
-            }
-          }).done(function(data, status, jqXHR) {
-            const {code, msg} = data;
-            if (code === 0) {
-              _this.$message({
-                message: "登录成功，欢迎回来！",
-                type: "success"
-              });
-              _this.$router.replace("/");
-            } else {
-              _this.$message({
-                message: msg,
-                type: "error"
-              });
-            }
-          });
+          login(this.form)
+            .then(res => {
+              const { code, msg, data } = res;
+              if (code === 0) {
+                this.$message({
+                  message: "登录成功，欢迎回来！",
+                  type: "success"
+                });
+                this.$router.replace("/");
+              } else {
+                this.$message({
+                  message: msg,
+                  type: "error"
+                });
+              }
+            })
+            .catch(error => {});
         } else {
         }
       });

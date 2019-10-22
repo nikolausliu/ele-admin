@@ -14,7 +14,7 @@
         </div>
         <el-dropdown-menu slot="dropdown" class="dropdown-menu">
           <el-dropdown-item command="logout">
-            <i class="el-icon-error"></i>退出登录
+            <i class="el-icon-switch-button"></i>退出登录
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
