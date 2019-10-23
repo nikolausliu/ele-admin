@@ -56,9 +56,9 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["sidebar", "menu"]),
+    ...mapGetters(["sidebarFold", "menu"]),
     isCollapse() {
-      return this.sidebar.fold;
+      return this.sidebarFold;
     }
   },
   methods: {}

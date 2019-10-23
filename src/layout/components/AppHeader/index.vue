@@ -2,15 +2,15 @@
   <div class="app-header">
     <app-header-controller
       class="app-header-controller"
-      :fold="sidebar.fold"
+      :fold="sidebarFold"
       @switch="switchSidebarFold"
     ></app-header-controller>
     <app-breadcrumb class="app-breadcrumb"></app-breadcrumb>
     <div class="app-header-menu">
       <el-dropdown trigger="click" @command="commandHandle">
         <div class="avatar">
-          <span class="username">Nikolaus</span>
-          <img :src="avatar" />
+          <span class="username">{{ userInfo.username }}</span>
+          <img :src="userInfo.avatar" />
         </div>
         <el-dropdown-menu slot="dropdown" class="dropdown-menu">
           <el-dropdown-item command="logout">
@@ -35,12 +35,10 @@ export default {
     [AppBreadcrumb.name]: AppBreadcrumb
   },
   data() {
-    return {
-      avatar: require("@/assets/avatar.png")
-    };
+    return {};
   },
   computed: {
-    ...mapGetters(["sidebar"])
+    ...mapGetters(["sidebarFold", "userInfo"])
   },
   methods: {
     switchSidebarFold() {
@@ -50,11 +48,27 @@ export default {
       this.$store.dispatch("app/switchHeaderFixed");
     },
     commandHandle(command) {
-      console.log(command)
       this[`${command}Handle`]();
     },
     logoutHandle() {
-      this.$router.replace('/login');
+      this.$store
+        .dispatch("user/logout")
+        .then(res => {
+          this.$message({
+            message: "退出登录成功",
+            type: "success",
+            showClose: true
+          });
+          this.$router.replace("/login");
+        })
+        .catch(err => {
+          console.warn("退出登录出错:", err.msg);
+          this.$message({
+            message: "退出登录遇到问题，请稍后重试",
+            type: "error",
+            showClose: true
+          });
+        });
     }
   }
 };

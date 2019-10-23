@@ -2,8 +2,8 @@
   <div class="app-layout">
     <app-sidebar class="app-sidebar"></app-sidebar>
     <div class="app-main-container" :class="{'app-main-container--is-collapse': isCollapse}">
-      <app-header :class="{'app-header--is-fixed': header.fixed}"></app-header>
-      <app-main :class="{'app-main--is-fixed': header.fixed}"></app-main>
+      <app-header :class="{'app-header--is-fixed': headerFixed}"></app-header>
+      <app-main :class="{'app-main--is-fixed': headerFixed}"></app-main>
     </div>
   </div>
 </template>
@@ -19,9 +19,9 @@ export default {
     [AppMain.name]: AppMain
   },
   computed: {
-    ...mapGetters(["sidebar", "header"]),
+    ...mapGetters(["sidebarFold", "headerFixed"]),
     isCollapse() {
-      return this.sidebar.fold;
+      return this.sidebarFold;
     }
   }
 };

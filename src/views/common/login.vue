@@ -30,7 +30,6 @@
 
 <script>
 import Particle from "zhihu-particle";
-import { login } from "@/api";
 
 export default {
   name: "login",
@@ -65,26 +64,26 @@ export default {
       );
     },
     submit() {
-      const _this = this;
       this.$refs.form.validate(valid => {
         if (valid) {
-          login(this.form)
+          this.$store
+            .dispatch("user/login", this.form)
             .then(res => {
-              const { code, msg, data } = res;
-              if (code === 0) {
-                this.$message({
-                  message: "登录成功，欢迎回来！",
-                  type: "success"
-                });
-                this.$router.replace("/");
-              } else {
-                this.$message({
-                  message: msg,
-                  type: "error"
-                });
-              }
+              this.$message({
+                message: "登录成功，欢迎回来！",
+                type: "success",
+                showClose: true
+              });
+              this.$router.replace("/");
             })
-            .catch(error => {});
+            .catch(err => {
+              console.warn("登录出错:", err.msg);
+              this.$message({
+                message: "登录遇到问题，请稍后重试",
+                type: "error",
+                showClose: true
+              });
+            });
         } else {
         }
       });

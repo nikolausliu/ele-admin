@@ -15,6 +15,7 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
 }, {})
 
 export default new Vuex.Store({
+  strict: process.env.NODE_ENV !== 'production',
   modules,
   getters
 })

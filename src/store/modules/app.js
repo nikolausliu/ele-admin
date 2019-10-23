@@ -1,18 +1,25 @@
+import { setStorage, getStorage } from '@/utils';
+
+const moduleKey = 'app';
+
+const defaultState = {
+  sidebarFold: false,
+  headerFixed: true,
+};
+
 const state = {
-  sidebar: {
-    fold: false,  // 是否折叠
-  },
-  header: {
-    fixed: true,  // 是否固定
-  }
+  sidebarFold: getStorage(`${moduleKey}/sidebarFold`) || defaultState.sidebarFold,
+  headerFixed: getStorage(`${moduleKey}/headerFixed`) || defaultState.headerFixed,
 }
 
 const mutations = {
   SWITCH_SIDEBAR_FOLD(state) {
-    state.sidebar.fold = !state.sidebar.fold;
+    state.sidebarFold = !state.sidebarFold;
+    setStorage(`${moduleKey}/sidebarFold`, state.sidebarFold);
   },
   SWITCH_HEADER_FIXED(state) {
-    state.header.fixed = !state.header.fixed;
+    state.headerFixed = !state.headerFixed;
+    setStorage(`${moduleKey}/headerFixed`, state.headerFixed);
   }
 }
 
