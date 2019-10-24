@@ -1,6 +1,6 @@
 <template>
   <div class="page-login" id="page-login">
-    <!-- <canvas id="canvas"></canvas> -->
+    <canvas id="canvas"></canvas>
     <div class="login-form">
       <el-form ref="form" :model="form" :rules="rules">
         <el-form-item prop="username">
@@ -29,7 +29,8 @@
 </template>
 
 <script>
-import Particle from "zhihu-particle";
+// import Particle from "zhihu-particle"
+import canvas from '@/utils/canvas'
 
 export default {
   name: "login",
@@ -52,16 +53,17 @@ export default {
     canvasInit() {
       // return;
       // https://github.com/jf3096/zhihu-particle
-      const options = {
-        atomColor: "#E4E5E6",
-        interactive: true,
-        density: "medium",
-        velocity: "medium"
-      };
-      const particle = new Particle(
-        document.getElementById("page-login"),
-        options
-      );
+      // const options = {
+      //   atomColor: "#E4E5E6",
+      //   interactive: true,
+      //   density: "medium",
+      //   velocity: "medium"
+      // };
+      // const particle = new Particle(
+      //   document.getElementById("page-login"),
+      //   options
+      // );
+      canvas()
     },
     submit() {
       this.$refs.form.validate(valid => {

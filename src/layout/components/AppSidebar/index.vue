@@ -3,6 +3,7 @@
     <el-scrollbar class="el-scrollbar" wrap-class="scrollbar-wrap">
       <el-menu
         :collapse="isCollapse"
+        :default-active="path"
         router
         text-color="#bfcbd0"
         background-color="#304156"
@@ -19,26 +20,6 @@
             <app-submenu :menu="item" :key="index"></app-submenu>
           </template>
         </template>
-        <!-- <el-menu-item index="/home">
-        <i class="el-icon-s-shop"></i>
-        <span slot="title">首页</span>
-      </el-menu-item>
-      <el-submenu index="/test">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span slot="title">测试</span>
-        </template>
-        <el-submenu index="/test/menu1">
-          <template slot="title">菜单1</template>
-          <el-menu-item index="/test/menu1/menu1-1">菜单1-1</el-menu-item>
-          <el-submenu index="/test/menu1/menu1-2">
-            <template slot="title">菜单1-2</template>
-            <el-menu-item index="/test/menu1/menu1-2/menu1-2-1">菜单1-2-1</el-menu-item>
-            <el-menu-item index="/test/menu1/menu1-2/menu1-2-2">菜单1-2-2</el-menu-item>
-          </el-submenu>
-        </el-submenu>
-        <el-menu-item index="/test/menu2">菜单2</el-menu-item>
-        </el-submenu>-->
       </el-menu>
     </el-scrollbar>
   </div>
@@ -53,14 +34,27 @@ export default {
     [AppSubmenu.name]: AppSubmenu
   },
   data() {
-    return {};
+    return {
+      path: null
+    };
   },
+
   computed: {
     ...mapGetters(["sidebarFold", "menu"]),
     isCollapse() {
       return this.sidebarFold;
     }
   },
+
+  watch: {
+    "$route.path": {
+      handler(val) {
+        this.path = val;
+      },
+      immediate: true
+    }
+  },
+
   methods: {}
 };
 </script>
