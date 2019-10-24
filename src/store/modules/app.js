@@ -8,8 +8,8 @@ const defaultState = {
 };
 
 const state = {
-  sidebarFold: getStorage(`${moduleKey}/sidebarFold`) || defaultState.sidebarFold,
-  headerFixed: getStorage(`${moduleKey}/headerFixed`) || defaultState.headerFixed,
+  sidebarFold: getStorage(`${moduleKey}/sidebarFold`) === null ? defaultState.sidebarFold : getStorage(`${moduleKey}/sidebarFold`),
+  headerFixed: getStorage(`${moduleKey}/headerFixed`) === null ? defaultState.headerFixed : getStorage(`${moduleKey}/headerFixed`),
 }
 
 const mutations = {

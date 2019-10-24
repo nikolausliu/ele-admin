@@ -1,2 +1,3 @@
-import './element';
-import './styles';
+import './element'
+import './styles'
+import '@/permission'

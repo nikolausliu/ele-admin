@@ -48,7 +48,10 @@ export default {
   &--is-collapse {
     margin-left: @sidebarCollapseWidth;
     .app-header {
-      width: calc(100% - @sidebarCollapseWidth);
+      width: 100%;
+      &--is-fixed {
+        width: calc(100% - @sidebarCollapseWidth);
+      }
     }
   }
   .app-main {

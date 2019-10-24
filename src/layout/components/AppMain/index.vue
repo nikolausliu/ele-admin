@@ -28,5 +28,6 @@ export default {
   min-height: calc(100vh - @appHeaderHeight);
   box-sizing: border-box;
   padding: 20px;
+  overflow: hidden;
 }
 </style>
