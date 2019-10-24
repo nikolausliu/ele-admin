@@ -31,13 +31,11 @@ const actions = {
   login({ commit }, params) {
     return new Promise((resolve, reject) => {
       api.login(params).then(res => {
-        const { code, msg, data } = res;
+        const { code, data } = res;
         if (code === 0) {
           commit('LOGIN', data);
-          resolve(data);
-        } else {
-          reject(new Error(msg));
         }
+        resolve(res);
       }).catch(err => {
         reject(err);
       });
@@ -47,13 +45,11 @@ const actions = {
     return new Promise((resolve, reject) => {
       api.logout().then(res => {
         console.log(res);
-        const { code, msg } = res;
+        const { code } = res;
         if (code === 0) {
           commit('LOGOUT');
-          resolve();
-        } else {
-          reject(new Error(msg));
         }
+        resolve();
       }).catch(err => {
         console.log(err);
         reject(err);

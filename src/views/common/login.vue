@@ -30,7 +30,7 @@
 
 <script>
 // import Particle from "zhihu-particle"
-import canvas from '@/utils/canvas'
+import canvas from "@/utils/canvas";
 
 export default {
   name: "login",
@@ -63,7 +63,7 @@ export default {
       //   document.getElementById("page-login"),
       //   options
       // );
-      canvas()
+      canvas();
     },
     submit() {
       this.$refs.form.validate(valid => {
@@ -71,12 +71,21 @@ export default {
           this.$store
             .dispatch("user/login", this.form)
             .then(res => {
-              this.$message({
-                message: "登录成功，欢迎回来！",
-                type: "success",
-                showClose: true
-              });
-              this.$router.replace("/");
+              const { code, msg, data } = res;
+              if (code === 0) {
+                this.$message({
+                  message: "登录成功，欢迎回来！",
+                  type: "success",
+                  showClose: true
+                });
+                this.$router.replace("/");
+              } else {
+                this.$message({
+                  message: msg,
+                  type: "error",
+                  showClose: true
+                });
+              }
             })
             .catch(err => {
               console.warn("登录出错:", err.msg);
