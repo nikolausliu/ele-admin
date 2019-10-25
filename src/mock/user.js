@@ -17,18 +17,19 @@ export default [
             menu,
             userInfo: {
               username: 'NikolausLiu',
-              avatar: 'http://ww1.sinaimg.cn/large/d7f38664ly1g8853afy4yj203k03kt8k.jpg'
-            }
-          }
+              avatar:
+                'http://ww1.sinaimg.cn/large/d7f38664ly1g8853afy4yj203k03kt8k.jpg',
+            },
+          },
         }
       } else {
         return {
           code: 201,
           msg: '账号或密码错误!',
-          data: null
+          data: null,
         }
       }
-    }
+    },
   },
   // 退出登录
   {
@@ -38,8 +39,8 @@ export default [
       return {
         code: 0,
         msg: 'ok',
-        data: null
+        data: null,
       }
-    }
-  }
-];
+    },
+  },
+]

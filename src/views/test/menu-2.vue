@@ -12,12 +12,13 @@ export default {
   },
   computed: {
     msg() {
-      return Array(100).fill('菜单2').join('<br>');
+      return Array(100)
+        .fill('菜单2')
+        .join('<br>')
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-
 </style>

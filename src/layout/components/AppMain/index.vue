@@ -10,20 +10,20 @@
 
 <script>
 export default {
-  name: "app-main",
+  name: 'app-main',
   data() {
-    return {};
+    return {}
   },
   computed: {
     key() {
-      return this.$route.path;
+      return this.$route.path
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>
-@import "~@/styles/variables.less";
+@import '~@/styles/variables.less';
 .app-main {
   min-height: calc(100vh - @appHeaderHeight);
   box-sizing: border-box;

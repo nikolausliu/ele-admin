@@ -9,26 +9,26 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { AppSidebar, AppHeader, AppMain } from "./components";
+import { mapGetters } from 'vuex'
+import { AppSidebar, AppHeader, AppMain } from './components'
 export default {
-  name: "app-layout",
+  name: 'app-layout',
   components: {
     [AppSidebar.name]: AppSidebar,
     [AppHeader.name]: AppHeader,
     [AppMain.name]: AppMain
   },
   computed: {
-    ...mapGetters(["sidebarFold", "headerFixed"]),
+    ...mapGetters(['sidebarFold', 'headerFixed']),
     isCollapse() {
-      return this.sidebarFold;
+      return this.sidebarFold
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>
-@import "~@/styles/variables.less";
+@import '~@/styles/variables.less';
 .app-sidebar {
   position: fixed;
   left: 0;

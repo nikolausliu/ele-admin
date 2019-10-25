@@ -3,8 +3,8 @@ export default function canvas() {
   const canvas = document.getElementById('canvas')
   const ctx = canvas.getContext('2d')
 
-  const cw = canvas.width = window.innerWidth
-  const ch = canvas.height = window.innerHeight
+  const cw = (canvas.width = window.innerWidth)
+  const ch = (canvas.height = window.innerHeight)
 
   ctx.fillStyle = '#ECE9E6'
   const linesNum = 16
@@ -30,7 +30,7 @@ export default function canvas() {
     this.vb = randomIntFromInterval(25, 100) / 150
 
     // 线条颜色
-    this.draw = function () {
+    this.draw = function() {
       ctx.strokeStyle = '#283443' // #eef2f3
       ctx.beginPath()
       ctx.moveTo(this.a.x, this.a.y)
@@ -38,7 +38,7 @@ export default function canvas() {
       ctx.stroke()
     }
 
-    this.update = function () {
+    this.update = function() {
       if (this.flag === 'v') {
         this.a.x += this.va
         this.b.x += this.vb
@@ -49,7 +49,7 @@ export default function canvas() {
       this.edges()
     }
 
-    this.edges = function () {
+    this.edges = function() {
       if (this.flag === 'v') {
         if (this.a.x < 0 || this.a.x > cw) {
           this.va *= -1
@@ -106,7 +106,7 @@ export default function canvas() {
     Draw()
   }
 
-  setTimeout(function () {
+  setTimeout(function() {
     Init()
     addEventListener('resize', Init, false)
   }, 15)
@@ -116,15 +116,20 @@ export default function canvas() {
     const p2 = l1.b
     const p3 = l2.a
     const p4 = l2.b
-    const denominator = (p4.y - p3.y) * (p2.x - p1.x) - (p4.x - p3.x) * (p2.y - p1.y)
-    const ua = ((p4.x - p3.x) * (p1.y - p3.y) - (p4.y - p3.y) * (p1.x - p3.x)) / denominator
-    const ub = ((p2.x - p1.x) * (p1.y - p3.y) - (p2.y - p1.y) * (p1.x - p3.x)) / denominator
+    const denominator =
+      (p4.y - p3.y) * (p2.x - p1.x) - (p4.x - p3.x) * (p2.y - p1.y)
+    const ua =
+      ((p4.x - p3.x) * (p1.y - p3.y) - (p4.y - p3.y) * (p1.x - p3.x)) /
+      denominator
+    const ub =
+      ((p2.x - p1.x) * (p1.y - p3.y) - (p2.y - p1.y) * (p1.x - p3.x)) /
+      denominator
     const x = p1.x + ua * (p2.x - p1.x)
     const y = p1.y + ua * (p2.y - p1.y)
     if (ua > 0 && ub > 0) {
       markPoint({
         x: x,
-        y: y
+        y: y,
       })
     }
   }

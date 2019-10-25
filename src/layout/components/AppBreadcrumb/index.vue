@@ -12,30 +12,33 @@
 
 <script>
 export default {
-  name: "app-breadcrumb",
+  name: 'app-breadcrumb',
   data() {
-    return {};
+    return {}
   },
   computed: {
     breadcrumblist() {
-      let matched = this.$route.matched;
+      let matched = this.$route.matched
       const home = {
-        path: "/",
+        path: '/',
         meta: {
-          title: "首页"
+          title: '首页'
         }
-      };
-      if (matched[matched.length - 1].meta && matched[matched.length - 1].meta.title === "首页") {
-        matched = [home];
       }
-      return matched;
+      if (
+        matched[matched.length - 1].meta &&
+        matched[matched.length - 1].meta.title === '首页'
+      ) {
+        matched = [home]
+      }
+      return matched
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>
-@import "~@/styles/variables.less";
+@import '~@/styles/variables.less';
 .app-breadcrumb {
   .el-breadcrumb {
     line-height: @appHeaderHeight;

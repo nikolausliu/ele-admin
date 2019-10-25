@@ -18,16 +18,16 @@
 
 <script>
 export default {
-  name: "app-submenu",
+  name: 'app-submenu',
   data() {
-    return {};
+    return {}
   },
   props: {
     menu: {
       type: Object
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>

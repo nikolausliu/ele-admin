@@ -26,56 +26,56 @@
 </template>
 
 <script>
-import { AppHeaderController, AppBreadcrumb } from "..";
-import { mapGetters } from "vuex";
+import { AppHeaderController, AppBreadcrumb } from '..'
+import { mapGetters } from 'vuex'
 export default {
-  name: "app-header",
+  name: 'app-header',
   components: {
     [AppHeaderController.name]: AppHeaderController,
     [AppBreadcrumb.name]: AppBreadcrumb
   },
   data() {
-    return {};
+    return {}
   },
   computed: {
-    ...mapGetters(["sidebarFold", "userInfo"])
+    ...mapGetters(['sidebarFold', 'userInfo'])
   },
   methods: {
     switchSidebarFold() {
-      this.$store.dispatch("app/switchSidebarFold");
+      this.$store.dispatch('app/switchSidebarFold')
     },
     settingsClickHandle() {
-      this.$store.dispatch("app/switchHeaderFixed");
+      this.$store.dispatch('app/switchHeaderFixed')
     },
     commandHandle(command) {
-      this[`${command}Handle`]();
+      this[`${command}Handle`]()
     },
     logoutHandle() {
       this.$store
-        .dispatch("user/logout")
+        .dispatch('user/logout')
         .then(res => {
           this.$message({
-            message: "退出登录成功",
-            type: "success",
+            message: '退出登录成功',
+            type: 'success',
             showClose: true
-          });
-          this.$router.replace("/login");
+          })
+          this.$router.replace('/login')
         })
         .catch(err => {
-          console.warn("退出登录出错:", err.msg);
+          console.warn('退出登录出错:', err.msg)
           this.$message({
-            message: "退出登录遇到问题，请稍后重试",
-            type: "error",
+            message: '退出登录遇到问题，请稍后重试',
+            type: 'error',
             showClose: true
-          });
-        });
+          })
+        })
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>
-@import "~@/styles/variables.less";
+@import '~@/styles/variables.less';
 .app-header {
   height: @appHeaderHeight;
   background-color: #fff;

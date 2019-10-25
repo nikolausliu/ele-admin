@@ -1,11 +1,10 @@
 export const errorInfo = {
   success: {
     code: 0,
-    msg: 'ok'
+    msg: 'ok',
   },
   tokenExpired: {
     code: 20001,
-    msg: 'token expired'
+    msg: 'token expired',
   },
-  
 }

@@ -12,12 +12,13 @@ export default {
   },
   computed: {
     msg() {
-      return Array(100).fill('首页').join('<br>');
+      return Array(100)
+        .fill('首页')
+        .join('<br>')
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-
 </style>

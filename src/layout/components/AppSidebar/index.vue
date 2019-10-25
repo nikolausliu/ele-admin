@@ -26,41 +26,41 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import AppSubmenu from "./app-submenu";
+import { mapGetters } from 'vuex'
+import AppSubmenu from './app-submenu'
 export default {
-  name: "app-sidebar",
+  name: 'app-sidebar',
   components: {
     [AppSubmenu.name]: AppSubmenu
   },
   data() {
     return {
       path: null
-    };
+    }
   },
 
   computed: {
-    ...mapGetters(["sidebarFold", "menu"]),
+    ...mapGetters(['sidebarFold', 'menu']),
     isCollapse() {
-      return this.sidebarFold;
+      return this.sidebarFold
     }
   },
 
   watch: {
-    "$route.path": {
+    '$route.path': {
       handler(val) {
-        this.path = val;
+        this.path = val
       },
       immediate: true
     }
   },
 
   methods: {}
-};
+}
 </script>
 
 <style lang="less" scoped>
-@import "~@/styles/variables.less";
+@import '~@/styles/variables.less';
 .app-sidebar {
   width: @sidebarWidth;
   transition: width 0.3s;
@@ -78,7 +78,7 @@ export default {
 }
 </style>
 <style lang="less">
-@import "~@/styles/variables.less";
+@import '~@/styles/variables.less';
 .app-sidebar {
   .scrollbar-wrap {
     overflow-x: auto !important;
@@ -92,6 +92,10 @@ export default {
           background-color: @submenuHoverBackgroundColor !important;
         }
       }
+    }
+
+    &.is-active > .el-submenu__title {
+      color: #f4f4f5 !important;
     }
   }
 }

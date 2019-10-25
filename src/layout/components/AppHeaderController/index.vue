@@ -5,11 +5,10 @@
 </template>
 
 <script>
-
 export default {
-  name: "app-header-controller",
+  name: 'app-header-controller',
   data() {
-    return {};
+    return {}
   },
   props: {
     fold: {
@@ -19,15 +18,15 @@ export default {
   },
   computed: {
     iconClass() {
-      return this.fold ? 'el-icon-s-unfold' : 'el-icon-s-fold';
+      return this.fold ? 'el-icon-s-unfold' : 'el-icon-s-fold'
     }
   },
   methods: {
     handlClick() {
-      this.$emit('switch');
+      this.$emit('switch')
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>

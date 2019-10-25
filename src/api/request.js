@@ -1,21 +1,21 @@
-import axios from 'axios';
-import qs from 'qs';
-import { Message } from 'element-ui';
+import axios from 'axios'
+import qs from 'qs'
+import { Message } from 'element-ui'
 
 // http://0.0.0.0:7300/mock/5d9ff076f9dfff3d6c15402e/manage
-axios.defaults.baseURL = '';
+axios.defaults.baseURL = ''
 
 axios.interceptors.request.use(
   config => {
-    const token = '';
-    config.headers["Authorization"] = 'Bearer ' + token;
-    return config;
+    const token = ''
+    config.headers['Authorization'] = 'Bearer ' + token
+    return config
   },
   error => {
-    console.dir(error);
-    return Promise.reject(error);
+    console.dir(error)
+    return Promise.reject(error)
   }
-);
+)
 
 axios.interceptors.response.use(
   response => {
@@ -42,7 +42,7 @@ axios.interceptors.response.use(
     // }
 
     // 2. 如果在拦截器里直接 return response.data，业务代码里会多一些重复代码（判断data.code），但自由度较高
-    return response.data;
+    return response.data
   },
   error => {
     /**
@@ -63,26 +63,34 @@ axios.interceptors.response.use(
     } else {
       // 可能是axios的设置出错触发的错误
     }
-    console.dir('error', error);
+    console.dir('error', error)
     Message({
       message: error.message,
       type: 'error',
-      duration: 5 * 1000
-    });
-    return Promise.reject(error);
+      duration: 5 * 1000,
+    })
+    return Promise.reject(error)
   }
-);
+)
 
-export const $axios = axios;
+export const $axios = axios
 
 export function get(url, params = {}, options = {}) {
-  return axios.get(url, Object.assign({}, { params }, options));
+  return axios.get(url, Object.assign({}, { params }, options))
 }
 
 export function post(url, data = {}, options = {}) {
-  return axios.post(url, qs.stringify(data), Object.assign({}, {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
-  }, options));
+  return axios.post(
+    url,
+    qs.stringify(data),
+    Object.assign(
+      {},
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      },
+      options
+    )
+  )
 }

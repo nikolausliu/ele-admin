@@ -30,24 +30,24 @@
 
 <script>
 // import Particle from "zhihu-particle"
-import canvas from "@/utils/canvas";
+import canvas from '@/utils/canvas'
 
 export default {
-  name: "login",
+  name: 'login',
   mounted() {
-    this.canvasInit();
+    this.canvasInit()
   },
   data() {
     return {
       form: {
-        username: "admin",
-        password: "123456"
+        username: 'admin',
+        password: '123456'
       },
       rules: {
-        username: [{ required: true, message: "用户名不能为空" }],
-        password: [{ required: true, message: "密码不能为空" }]
+        username: [{ required: true, message: '用户名不能为空' }],
+        password: [{ required: true, message: '密码不能为空' }]
       }
-    };
+    }
   },
   methods: {
     canvasInit() {
@@ -63,44 +63,44 @@ export default {
       //   document.getElementById("page-login"),
       //   options
       // );
-      canvas();
+      canvas()
     },
     submit() {
       this.$refs.form.validate(valid => {
         if (valid) {
           this.$store
-            .dispatch("user/login", this.form)
+            .dispatch('user/login', this.form)
             .then(res => {
-              const { code, msg, data } = res;
+              const { code, msg, data } = res
               if (code === 0) {
                 this.$message({
-                  message: "登录成功，欢迎回来！",
-                  type: "success",
+                  message: '登录成功，欢迎回来！',
+                  type: 'success',
                   showClose: true
-                });
-                this.$router.replace("/");
+                })
+                this.$router.replace('/')
               } else {
                 this.$message({
                   message: msg,
-                  type: "error",
+                  type: 'error',
                   showClose: true
-                });
+                })
               }
             })
             .catch(err => {
-              console.warn("登录出错:", err.msg);
+              console.warn('登录出错:', err.msg)
               this.$message({
-                message: "登录遇到问题，请稍后重试",
-                type: "error",
+                message: '登录遇到问题，请稍后重试',
+                type: 'error',
                 showClose: true
-              });
-            });
+              })
+            })
         } else {
         }
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>

@@ -1,40 +1,46 @@
-import { setStorage, getStorage } from '@/utils';
+import { setStorage, getStorage } from '@/utils'
 
-const moduleKey = 'app';
+const moduleKey = 'app'
 
 const defaultState = {
   sidebarFold: false,
   headerFixed: true,
-};
+}
 
 const state = {
-  sidebarFold: getStorage(`${moduleKey}/sidebarFold`) === null ? defaultState.sidebarFold : getStorage(`${moduleKey}/sidebarFold`),
-  headerFixed: getStorage(`${moduleKey}/headerFixed`) === null ? defaultState.headerFixed : getStorage(`${moduleKey}/headerFixed`),
+  sidebarFold:
+    getStorage(`${moduleKey}/sidebarFold`) === null
+      ? defaultState.sidebarFold
+      : getStorage(`${moduleKey}/sidebarFold`),
+  headerFixed:
+    getStorage(`${moduleKey}/headerFixed`) === null
+      ? defaultState.headerFixed
+      : getStorage(`${moduleKey}/headerFixed`),
 }
 
 const mutations = {
   SWITCH_SIDEBAR_FOLD(state) {
-    state.sidebarFold = !state.sidebarFold;
-    setStorage(`${moduleKey}/sidebarFold`, state.sidebarFold);
+    state.sidebarFold = !state.sidebarFold
+    setStorage(`${moduleKey}/sidebarFold`, state.sidebarFold)
   },
   SWITCH_HEADER_FIXED(state) {
-    state.headerFixed = !state.headerFixed;
-    setStorage(`${moduleKey}/headerFixed`, state.headerFixed);
-  }
+    state.headerFixed = !state.headerFixed
+    setStorage(`${moduleKey}/headerFixed`, state.headerFixed)
+  },
 }
 
 const actions = {
   switchSidebarFold({ commit }) {
-    commit('SWITCH_SIDEBAR_FOLD');
+    commit('SWITCH_SIDEBAR_FOLD')
   },
   switchHeaderFixed({ commit }) {
-    commit('SWITCH_HEADER_FIXED');
-  }
+    commit('SWITCH_HEADER_FIXED')
+  },
 }
 
 export default {
   namespaced: true,
   state,
   mutations,
-  actions
+  actions,
 }

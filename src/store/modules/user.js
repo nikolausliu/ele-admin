@@ -1,7 +1,7 @@
-import { setStorage, getStorage, clearStorage } from '@/utils';
-import * as api from '@/api';
+import { setStorage, getStorage, clearStorage } from '@/utils'
+import * as api from '@/api'
 
-const moduleKey = 'user';
+const moduleKey = 'user'
 
 const state = {
   token: getStorage(`${moduleKey}/token`) || '',
@@ -11,56 +11,62 @@ const state = {
 
 const mutations = {
   LOGIN(state, payload) {
-    state.token = payload.token || '';
-    state.menu = payload.menu || [];
-    state.userInfo = payload.userInfo || {};
+    state.token = payload.token || ''
+    state.menu = payload.menu || []
+    state.userInfo = payload.userInfo || {}
     Object.keys(payload).forEach(item => {
-      const key = `${moduleKey}/${item}`;
-      setStorage([key], payload[item]);
-    });
+      const key = `${moduleKey}/${item}`
+      setStorage([key], payload[item])
+    })
   },
   LOGOUT(state) {
-    state.token = '';
-    state.menu = [];
-    state.userInfo = {};
-    clearStorage();
-  }
+    state.token = ''
+    state.menu = []
+    state.userInfo = {}
+    clearStorage()
+  },
 }
 
 const actions = {
   login({ commit }, params) {
     return new Promise((resolve, reject) => {
-      api.login(params).then(res => {
-        const { code, data } = res;
-        if (code === 0) {
-          commit('LOGIN', data);
-        }
-        resolve(res);
-      }).catch(err => {
-        reject(err);
-      });
-    });
+      api
+        .login(params)
+        .then(res => {
+          const { code, data } = res
+          if (code === 0) {
+            commit('LOGIN', data)
+          }
+          resolve(res)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
   },
   logout({ commit }) {
     return new Promise((resolve, reject) => {
-      api.logout().then(res => {
-        console.log(res);
-        const { code } = res;
-        if (code === 0) {
-          commit('LOGOUT');
-        }
-        resolve();
-      }).catch(err => {
-        console.log(err);
-        reject(err);
-      })
+      api
+        .logout()
+        .then(res => {
+          console.log(res)
+          const { code } = res
+          if (code === 0) {
+            commit('LOGOUT')
+          }
+          resolve()
+        })
+        .catch(err => {
+          console.log(err)
+          reject(err)
+        })
     })
-  }
+  },
 }
 
 export default {
   namespaced: true,
   state,
   mutations,
-  actions
+  actions,
 }

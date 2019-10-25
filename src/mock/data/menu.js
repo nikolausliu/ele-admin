@@ -3,7 +3,7 @@ const menu = [
     path: '/home',
     title: '首页',
     icon: 'el-icon-s-shop',
-    children: []
+    children: [],
   },
   {
     path: '/test',
@@ -17,7 +17,7 @@ const menu = [
           {
             path: '/test/menu1/menu1-1',
             title: '菜单1-1',
-            children: []
+            children: [],
           },
           {
             path: '/test/menu1/menu1-2',
@@ -26,24 +26,24 @@ const menu = [
               {
                 path: '/test/menu1/menu1-2/menu1-2-1',
                 title: '菜单1-2-1',
-                children: []
+                children: [],
               },
               {
                 path: '/test/menu1/menu1-2/menu1-2-2',
                 title: '菜单1-2-2',
-                children: []
+                children: [],
               },
-            ]
+            ],
           },
-        ]
+        ],
       },
       {
         path: '/test/menu2',
         title: '菜单2',
-        children: []
+        children: [],
       },
-    ]
+    ],
   },
-];
+]
 
-export default menu;
+export default menu
